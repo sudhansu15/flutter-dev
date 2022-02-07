@@ -3,27 +3,33 @@ import 'package:first/widgets/text_field_input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _bioController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   @override
   void dispose() {
     super.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _bioController.dispose();
+    _usernameController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //main design
       body: SafeArea(
+        //below the notch or visible area
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 32.0),
           width: double.infinity,
@@ -40,15 +46,43 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: primaryColor,
                 height: 64,
               ),
-              //login form
               const SizedBox(height: 64.0),
+              Stack(
+                children: [
+                  const CircleAvatar(
+                    radius: 64,
+                    backgroundImage: NetworkImage(
+                        'https://images.unsplash.com/photo-1644169342452-a127938af7d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1168&q=80'),
+                  ),
+                  Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.add_a_photo),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: 32.0),
+              //login form
+              //textfield for username
+              TextFieldInput(
+                  hintText: 'enter your username',
+                  textEditingController: _usernameController,
+                  textInputType: TextInputType.text),
+              const SizedBox(height: 24.0),
               TextFieldInput(
                   hintText: 'enter your email',
                   textEditingController: _emailController,
                   textInputType: TextInputType.emailAddress),
-              const SizedBox(
-                height: 24.0,
-              ),
+              const SizedBox(height: 24.0),
+              //textfield for bio
+              TextFieldInput(
+                  hintText: 'enter your bio',
+                  textEditingController: _bioController,
+                  textInputType: TextInputType.text),
+              const SizedBox(height: 24.0),
               TextFieldInput(
                   hintText: 'enter your password',
                   textEditingController: _passwordController,
@@ -60,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               //button login
               InkWell(
                 child: Container(
-                  child: const Text('login'),
+                  child: const Text('Signup'),
                   width: double.infinity,
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(vertical: 12),
@@ -72,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               //transitioning to signup
-              Row(
+              /* Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
@@ -91,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ],
-              ),
+              ), */
               const SizedBox(
                 height: 24.0,
               ),

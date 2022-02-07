@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 // import 'package:first/responsive/responsive_layout_screen.dart';
-import 'package:first/screens/login_screen.dart';
+// import 'package:first/screens/login_screen.dart';
+import 'package:first/screens/signup_screen.dart';
 import 'package:first/utils/colors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
       // home: const ResponsiveLayout(
       //     mobileScreenLayout: MobileScreenLayout(),
       //     webScreenLayout: WebScreenLayout()),
-      home: const LoginScreen(),
+      // home: const LoginScreen(),
+      home: const SignupScreen(),
       theme: ThemeData.dark()
           .copyWith(scaffoldBackgroundColor: mobileBackgroundColor),
     );
